@@ -1,9 +1,11 @@
-import './search-panel.css';
+// import './search-panel.css';
+
+import { Form } from "react-bootstrap"
 
 export const SearchPanel = () => {
     return (
-        <input type="text"
-                className="form-control search-input"
-                placeholder="Найти сотрудника"/>
+            <Form.Control type="text"
+                className="form-control"
+                placeholder="Найти сотрудника" />
     )
 }

@@ -1,11 +1,13 @@
-import "./app-info.css";
+/* eslint-disable react/prop-types */
+import { Panel } from "../ui";
+// import "./app-info.css";
 
-export const AppInfo = () => {
+export const AppInfo = ({userCount}) => {
     return (
-        <div className="app-info">
+        <Panel>
             <h1>Учет сотрудников в компании N</h1>
-            <h2>Общее число сотрудников:</h2>
-            <h2>Премию получат:</h2>
-        </div>
+            <h2>Общее число сотрудников: {userCount.total}</h2>
+            <h2>Премию получат: {userCount.inc}</h2>
+        </Panel>
     )
 }

@@ -1,8 +1,9 @@
-import './employees-add-form.css';
+import { Panel } from '../ui';
+// import './employees-add-form.css';
 
 export const EmployeesAddForm = () => {
     return (
-        <div className="app-add-form">
+        <Panel>
             <h3>Добавьте нового сотрудника</h3>
             <form
                 className="add-form d-flex">
@@ -16,6 +17,6 @@ export const EmployeesAddForm = () => {
                 <button type="submit"
                         className="btn btn-outline-light">Добавить</button>
             </form>
-        </div>
+        </Panel>
     )
 }

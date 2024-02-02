@@ -1,20 +1,27 @@
-import "./app-filter.css";
+// import "./app-filter.css";
+
+import { Button, ButtonGroup } from "react-bootstrap"
 
 export const AppFilter = () => {
     return (
-        <div className="btn-group">
-            <button type="button"
-                    className="btn btn-light">
-                    Все сотрудники
-            </button>
-            <button type="button"
-                    className="btn btn-outline-light">
-                    На повышение
-            </button>
-            <button type="button"
-                    className="btn btn-outline-light">
-                    З/П больше 1000$
-            </button>
-        </div>
+        <ButtonGroup>
+            <Button type="button"
+            variant="secondary"
+            >
+                Все сотрудники
+            </Button>
+            <Button type="button"
+            variant="secondary"
+
+            >
+                На повышение
+            </Button>
+            <Button type="button"
+            variant="secondary"
+
+            >
+                З/П больше 1000$
+            </Button>
+        </ButtonGroup>
     )
 }
