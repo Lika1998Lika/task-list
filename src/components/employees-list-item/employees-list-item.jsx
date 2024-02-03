@@ -11,7 +11,7 @@ export const EmployeesListItem = (props) => {
         <ListGroupItem>
             <Stack direction="horizontal" className="d-flex justify-content-between">
                 <div>
-                    <span style={{ color: item.increased ? 'gold' : '' }}>
+                    <span style={{ color: item.increased === "approved" ? 'gold' : '' }}>
                         {item.name}
                     </span>
                 </div>
@@ -22,7 +22,7 @@ export const EmployeesListItem = (props) => {
                             title="На повышение"
                             role="button"
                             onClick={() => toggleIncrease(item.id)}
-                            color={item.increased ? 'gold' : ''} />
+                            color={item.increased === "approved" ? 'gold' : ''} />
                         <BsTrash
                             title="Удалить"
                             role="button"

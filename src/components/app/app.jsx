@@ -1,88 +1,108 @@
-//import {  useState } from 'react';
-import { v4 as uniqId } from 'uuid'
 import { AppInfo } from '../app-info/app-info'
 import { SearchPanel } from '../search-panel/search-panel';
 import { AppFilter } from '../app-filter/app-filter';
 import EmployeesList from '/src/components/employees-list/employees-list/';
 import { EmployeesAddForm } from '../employees-add-form/employees-add-form'
 
-import { Container } from 'react-bootstrap';
-import { useState } from 'react';
+import { Container, Spinner } from 'react-bootstrap';
+import { useEffect, useState } from 'react';
 import { Panel } from '../ui';
+import { getUsers, addUser, deleteUser, updateUser } from '../../services/userService';
+
 
 export const App = () => {
-  const [data, setData] = useState([{
-    id: uniqId(),
-    name: 'Anzhelika Vanuyto',
-    salary: '3000',
-    increased: false,
-    term: false,
-  },
-  {
-    id: uniqId(),
-    name: 'Anzhelika Vanuyto',
-    salary: '3000',
-    increased: true,
-    term: true,
-  }
-  ]);
+  const [data, setData] = useState([]);
 
-  const toggleIncrease = (id) => {
-    const newData = data.map((item) => {
-      if (item.id === id) {
-        return { ...item, increased: !item.increased }
+  const [filter, setFilter] = useState('all'); // all increased salary > 1000
+  const [search, setSearch] = useState('');
+  const [louding, setLoading] = useState(false);
+
+  const handleChangeFilter = (filterValue) => {
+    setFilter(filterValue)
+  }
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      setLoading(true);
+  
+      try {
+        const users = await getUsers(filter);
+        setData(users);
+      } catch (error) {
+        console.error('Ошибка загрузки данных', error);
+        // Обработка ошибок при загрузке данных
+      } finally {
+        setLoading(false);
       }
-      return item
-    })
-    setData(newData)
+    }
+  
+    fetchUsers();
+  }, [filter]);
+
+  const addUserForm = async (user) => {
+    await addUser(user)
+    getUsers(filter)
+      .then((users) => setData(users))
+  }
+
+  const toggleIncrease = async (id) => {
+    const user = data.find(item => item.id === id)
+    user.increased = user.increased === 'approved' ? 'not-approved' : 'approved';
+    await updateUser(id, user)
+    getUsers(filter)
+      .then((users) => setData(users))
   };
 
-  const onDelete = (id) => {
-    const newData = data.filter((item) => item.id !== id)
-    setData(newData)
+  const onDelete = async (id) => {
+    await deleteUser(id)
+    getUsers(filter)
+      .then((users) => setData(users))
   }
-  const toggleTerm = (id) => {
-    const newData = data.map(item => {
-      if (item.id === id) {
-        return { ...item, term: !item.term }
-      }
-      return item;
-    })
-    setData(newData);
+
+  const toggleTerm = async (id) => {
+    const user = data.find(item => item.id === id)
+    user.term = !user.term
+    await updateUser(id, user)
+    getUsers(filter)
+      .then((users) => setData(users))
   }
 
   const userCount = {
     total: data.length,
     inc: data.filter(item => item.increased).length
   }
-
+  console.log(louding)
   return (
-    <Container className="app">
-      <div className='mt-3'>
-
-        <AppInfo userCount={userCount}/>
+    <Container className="w-75">
+      <div className='mt-5'>
+        <AppInfo userCount={userCount} />
       </div>
 
       <div className="mt-3">
         <Panel>
-          <SearchPanel />
-          <div className='mt-1'>
-            <AppFilter />
+          <SearchPanel
+            search={search}
+            setSearch={setSearch}
+          />
+          <div className='mt-2'>
+            <AppFilter setFilter={handleChangeFilter} filter={filter} />
           </div>
         </Panel>
       </div>
       {
-        data.length > 0 ? (
+        louding ? (
+          <Panel> 
+            <Spinner animation="border" variant="light" />
+          </Panel>
+        ) : data.length > 0 ? (
           <div className='mt-3'>
-          <EmployeesList data={data} toggleIncrease={toggleIncrease} onDelete={onDelete} toggleTerm={toggleTerm} />
-        </div>
+            <EmployeesList data={data} toggleIncrease={toggleIncrease} onDelete={onDelete} toggleTerm={toggleTerm} />
+          </div>
         ) : <p className='lead text-center mt-3'>Сотрудников нет</p>
       }
-
       <div className='mt-3'>
-        <EmployeesAddForm />
+        <EmployeesAddForm addUser={addUserForm} />
       </div>
-
     </Container>
   );
 }

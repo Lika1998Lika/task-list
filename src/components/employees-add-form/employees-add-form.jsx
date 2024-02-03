@@ -1,22 +1,45 @@
+/* eslint-disable react/prop-types */
+import { useState } from 'react';
+import { v4 as uniqId } from 'uuid'
 import { Panel } from '../ui';
-// import './employees-add-form.css';
+import { Button, Form } from 'react-bootstrap';
 
-export const EmployeesAddForm = () => {
+export const EmployeesAddForm = ({ addUser }) => {
+    const [userName, setUserName] = useState('');
+    const [salary, setSalary] = useState('');
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
+
+        if (userName === '' || salary === '') {
+            return
+        }
+        const user = {
+            id: uniqId(),
+            name: userName,
+            salary: salary,
+            increased: "not-approved",
+            term: false,
+        }
+
+        addUser(user)
+        setUserName('')
+        setSalary('')
+    }
     return (
         <Panel>
             <h3>Добавьте нового сотрудника</h3>
-            <form
-                className="add-form d-flex">
-                <input type="text"
-                    className="form-control new-post-label"
+            <Form onSubmit={handleSubmit}>
+                <Form.Control type="text"
+                    value={userName}
+                    onChange={(evt) => setUserName(evt.target.value)}
                     placeholder="Как его зовут?" />
-                <input type="number"
-                    className="form-control new-post-label"
+                <Form.Control type="number"
+                    value={salary}
+                    onChange={(evt) => setSalary(evt.target.value)}
                     placeholder="З/П в $?" />
 
-                <button type="submit"
-                        className="btn btn-outline-light">Добавить</button>
-            </form>
+                <Button className='mt-2 ' type="submit" variant='dark' size="lg">Добавить</Button>
+            </Form>
         </Panel>
     )
 }

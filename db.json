@@ -1,0 +1,46 @@
+{
+  "users": [
+    {
+      "id": "12",
+      "name": "Anzhelika Vanuyto",
+      "salary": 13000,
+      "increased": "approved",
+      "term": false
+    },
+    {
+      "id": "8b518e9a-4ac3-4b7e-9b79-d689f7dc0269",
+      "name": "qqqq",
+      "salary": "3",
+      "increased": "approved",
+      "term": false
+    },
+    {
+      "id": "8749027d-1ade-4f26-be92-9b83ec0f47d4",
+      "name": "aaaa",
+      "salary": "4",
+      "increased": "not-approved",
+      "term": true
+    },
+    {
+      "id": "98de3cfc-ef1a-4681-8a03-657581d087bc",
+      "name": "aaa",
+      "salary": "33",
+      "increased": "not-approved",
+      "term": false
+    },
+    {
+      "id": "db46a733-f243-4ecc-bd49-c42c2042919e",
+      "name": "wwwwwwww",
+      "salary": "3",
+      "increased": "approved",
+      "term": false
+    },
+    {
+      "id": "eda85104-c501-4398-824c-6bb74c97fdce",
+      "name": ",d;d.d;d.",
+      "salary": "20000",
+      "increased": "not-approved",
+      "term": false
+    }
+  ]
+}
