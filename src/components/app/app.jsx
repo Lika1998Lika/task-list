@@ -71,13 +71,13 @@ export const App = () => {
     total: data.length,
     inc: data.filter(item => item.increased).length
   }
-  console.log(louding)
+
+  
   return (
     <Container className="w-75">
       <div className='mt-5'>
         <AppInfo userCount={userCount} />
       </div>
-
       <div className="mt-3">
         <Panel>
           <SearchPanel
@@ -96,7 +96,12 @@ export const App = () => {
           </Panel>
         ) : data.length > 0 ? (
           <div className='mt-3'>
-            <EmployeesList data={data} toggleIncrease={toggleIncrease} onDelete={onDelete} toggleTerm={toggleTerm} />
+            <EmployeesList 
+              data={data} 
+              toggleIncrease={toggleIncrease} 
+              onDelete={onDelete} 
+              toggleTerm={toggleTerm} 
+              />
           </div>
         ) : <p className='lead text-center mt-3'>Сотрудников нет</p>
       }

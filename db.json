@@ -2,23 +2,23 @@
   "users": [
     {
       "id": "12",
-      "name": "Anzhelika Vanuyto",
-      "salary": 13000,
-      "increased": "approved",
+      "name": "Anzhelika",
+      "salary": "13006",
+      "increased": "not-approved",
       "term": false
     },
     {
       "id": "8b518e9a-4ac3-4b7e-9b79-d689f7dc0269",
-      "name": "qqqq",
-      "salary": "3",
-      "increased": "approved",
+      "name": "Roman",
+      "salary": "11",
+      "increased": "not-approved",
       "term": false
     },
     {
       "id": "8749027d-1ade-4f26-be92-9b83ec0f47d4",
       "name": "aaaa",
       "salary": "4",
-      "increased": "not-approved",
+      "increased": "approved",
       "term": true
     },
     {

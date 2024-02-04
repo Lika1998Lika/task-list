@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
 //import './employees-list-item.css';
 import { ListGroupItem, Stack } from "react-bootstrap";
-import { BsCookie, BsTrash } from "react-icons/bs";
+import { BsCookie, BsPencilFill, BsTrash } from "react-icons/bs";
 import { AiFillStar } from "react-icons/ai";
 
 
 export const EmployeesListItem = (props) => {
-    const { item, toggleIncrease, onDelete, toggleTerm } = props;
+    const { item, toggleIncrease, onDelete, toggleTerm, handleShow, handleSetUserId} = props;
     return (
         <ListGroupItem>
             <Stack direction="horizontal" className="d-flex justify-content-between">
@@ -33,6 +33,13 @@ export const EmployeesListItem = (props) => {
                             role="button"
                             fill={item.term ? 'red' : ''}
                         />
+                        <BsPencilFill 
+                        title="Редактировать"
+                        role="button"
+                        onClick={() => {
+                            handleSetUserId(item.id)
+                            handleShow()
+                        }}/>
                     </Stack>
                 </Stack>
 
