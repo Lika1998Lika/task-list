@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Button, Form } from 'react-bootstrap';
 import { updateUser } from '../../services/userService';
 
-export const EditingForm = ({user, onSucces, onCancel}) => {
+export const EditingForm = ({user, onSucces, onCancel, updateState}) => {
   const [userName, setUserName] = useState(user.name);
   const [salary, setSalary] = useState(user.salary);
 
@@ -24,6 +24,7 @@ const handleChangeSalary = (evt) => {
 
     await updateUser(user.id, updatedUser)
     onSucces()
+    await updateState();
 }
 
 
@@ -35,10 +36,12 @@ const handleChangeSalary = (evt) => {
         type="number"
         className="mt-3"
         onChange={handleChangeSalary} />
+        <hr />
     <Button variant="secondary" onClick={onCancel}>
         Отмена
     </Button>
-    <Button variant="primary" type="submit">
+    {' '}
+    <Button variant="dark" type="submit">
         Редактировать
     </Button>
 </Form>

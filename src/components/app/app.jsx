@@ -39,32 +39,33 @@ export const App = () => {
     fetchUsers();
   }, [filter]);
 
+  const updateState = async () => {
+    getUsers(filter)
+      .then((users) => setData(users));
+  };
+
   const addUserForm = async (user) => {
     await addUser(user)
-    getUsers(filter)
-      .then((users) => setData(users))
+    updateState();
   }
 
   const toggleIncrease = async (id) => {
     const user = data.find(item => item.id === id)
     user.increased = user.increased === 'approved' ? 'not-approved' : 'approved';
     await updateUser(id, user)
-    getUsers(filter)
-      .then((users) => setData(users))
+    updateState();
   };
 
   const onDelete = async (id) => {
     await deleteUser(id)
-    getUsers(filter)
-      .then((users) => setData(users))
+    updateState();
   }
 
   const toggleTerm = async (id) => {
     const user = data.find(item => item.id === id)
     user.term = !user.term
     await updateUser(id, user)
-    getUsers(filter)
-      .then((users) => setData(users))
+    updateState();
   }
 
   const userCount = {
@@ -101,6 +102,7 @@ export const App = () => {
               toggleIncrease={toggleIncrease} 
               onDelete={onDelete} 
               toggleTerm={toggleTerm} 
+              updateState={updateState}
               />
           </div>
         ) : <p className='lead text-center mt-3'>Сотрудников нет</p>

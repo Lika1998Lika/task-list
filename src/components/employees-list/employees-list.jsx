@@ -4,13 +4,10 @@ import { ListGroup, Modal } from "react-bootstrap";
 import { Panel } from "../ui";
 import { useEffect, useState } from "react";
 import { EditingForm } from "../editingform/editingform";
+import { useModal } from "../../hooks/useModal";
 
-const EmployeesList = ({ data, toggleIncrease, onDelete, toggleTerm }) => {
-
-    const [show, setShow] = useState(false);
-
+const EmployeesList = ({ data, toggleIncrease, onDelete, toggleTerm, updateState }) => {
     const [editingUserId, setEditingUserId] = useState(null);
-
     const [editingUser, setEditingUser] = useState(null);
 
     useEffect(() => {
@@ -20,11 +17,7 @@ const EmployeesList = ({ data, toggleIncrease, onDelete, toggleTerm }) => {
 
     const handleSetUserId = (userId) => setEditingUserId(userId);
 
-    const handleShow = () => setShow(true);
-
-    const handleClose = () => setShow(false);
-
-
+    const { showModal, closeModal, openModal } = useModal();
 
     const elements = data.map((item) => {
         return (
@@ -35,7 +28,7 @@ const EmployeesList = ({ data, toggleIncrease, onDelete, toggleTerm }) => {
                 item={item}
                 onDelete={onDelete}
                 toggleTerm={toggleTerm}
-                handleShow={handleShow}
+                handleShow={openModal}
                 handleSetUserId={handleSetUserId}
             />
         )
@@ -48,12 +41,12 @@ const EmployeesList = ({ data, toggleIncrease, onDelete, toggleTerm }) => {
 
             {
                 editingUser && (
-                    <Modal show={show} onHide={handleClose}>
+                    <Modal show={showModal} onHide={closeModal}>
                     <Modal.Header closeButton>
                         <Modal.Title>Редактирование сотрудника</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                       <EditingForm user={editingUser} onCancel={handleClose} onSucces={handleClose}/>
+                       <EditingForm user={editingUser} onCancel={closeModal} onSucces={closeModal} updateState={updateState}/>
                     </Modal.Body>
                 </Modal>
                 )
