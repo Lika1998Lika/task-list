@@ -1,9 +1,37 @@
 {
   "users": [
     {
-      "id": "12",
-      "name": "Anzhelika",
-      "salary": "13006",
+      "id": "a2b86f8a-6716-4ba4-989c-868e9adb56b6",
+      "name": "Ivan Ivanov",
+      "salary": 3000,
+      "increased": "not-approved",
+      "term": false
+    },
+    {
+      "id": "9e118229-121d-4245-a687-48725618819c",
+      "name": "Victor Retrov",
+      "salary": 10000,
+      "increased": "not-approved",
+      "term": false
+    },
+    {
+      "id": "a4893a01-3989-4d31-82d5-1b93e743bb31",
+      "name": "Lika",
+      "salary": 45000,
+      "increased": "not-approved",
+      "term": false
+    },
+    {
+      "id": "0a87bbd8-4db2-4dc6-a25a-bf600a25b955",
+      "name": "ytyytyty",
+      "salary": 60000,
+      "increased": "not-approved",
+      "term": false
+    },
+    {
+      "id": "5c18de00-6c88-401f-928d-157faa057eaf",
+      "name": "Dana yadne",
+      "salary": 100000,
       "increased": "not-approved",
       "term": false
     }

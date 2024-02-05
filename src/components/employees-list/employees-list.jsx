@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { EditingForm } from "../editingform/editingform";
 import { useModal } from "../../hooks/useModal";
 
-const EmployeesList = ({ data, toggleIncrease, onDelete, toggleTerm, updateState }) => {
+const EmployeesList = ({ data, toggleIncrease, onDelete, updateState }) => {
     const [editingUserId, setEditingUserId] = useState(null);
     const [editingUser, setEditingUser] = useState(null);
 
@@ -27,7 +27,6 @@ const EmployeesList = ({ data, toggleIncrease, onDelete, toggleTerm, updateState
                 key={item.id}
                 item={item}
                 onDelete={onDelete}
-                toggleTerm={toggleTerm}
                 handleShow={openModal}
                 handleSetUserId={handleSetUserId}
             />

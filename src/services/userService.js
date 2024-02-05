@@ -17,7 +17,7 @@ export const getUsers = async (filter) => {
     params = {};
   }
   if(filter === 'salary') {
-    params.salary_gte = 1000
+    params.salary_gte = 1000 //http://localhost:5000/users?salary_gte=1000
   }
   const response = await api.get(USERS_SERVICE.users, {params});
   return response.data;

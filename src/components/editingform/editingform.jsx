@@ -18,7 +18,7 @@ const handleChangeSalary = (evt) => {
     evt.preventDefault()
     const updatedUser = {
         ...user,
-        salary: salary,
+        salary: Number(salary),
         name: userName,
     }
 

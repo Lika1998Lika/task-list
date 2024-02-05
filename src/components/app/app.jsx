@@ -12,15 +12,14 @@ import { getUsers, addUser, deleteUser, updateUser } from '../../services/userSe
 
 export const App = () => {
   const [data, setData] = useState([]);
-
-  const [filter, setFilter] = useState('all'); // all increased salary > 1000
+  const [filter, setFilter] = useState('all'); 
   const [search, setSearch] = useState('');
   const [louding, setLoading] = useState(false);
 
   const handleChangeFilter = (filterValue) => {
     setFilter(filterValue)
   }
-
+   
   useEffect(() => {
     const fetchUsers = async () => {
       setLoading(true);
@@ -30,7 +29,6 @@ export const App = () => {
         setData(users);
       } catch (error) {
         console.error('Ошибка загрузки данных', error);
-        // Обработка ошибок при загрузке данных
       } finally {
         setLoading(false);
       }
@@ -61,19 +59,15 @@ export const App = () => {
     updateState();
   }
 
-  const toggleTerm = async (id) => {
-    const user = data.find(item => item.id === id)
-    user.term = !user.term
-    await updateUser(id, user)
-    updateState();
-  }
-
   const userCount = {
     total: data.length,
-    inc: data.filter(item => item.increased).length
+    inc: data.filter(item => item.increased === "approved").length
   }
 
-  
+  const filteredData = data.filter((employee) =>
+  employee.name.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <Container className="w-75">
       <div className='mt-5'>
@@ -98,10 +92,10 @@ export const App = () => {
         ) : data.length > 0 ? (
           <div className='mt-3'>
             <EmployeesList 
-              data={data} 
+              data={search.length === 0 ? data 
+              : filteredData } 
               toggleIncrease={toggleIncrease} 
               onDelete={onDelete} 
-              toggleTerm={toggleTerm} 
               updateState={updateState}
               />
           </div>

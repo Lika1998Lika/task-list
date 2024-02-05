@@ -16,7 +16,7 @@ export const EmployeesAddForm = ({ addUser }) => {
         const user = {
             id: uniqId(),
             name: userName,
-            salary: salary,
+            salary: Number(salary),
             increased: "not-approved",
             term: false,
         }
