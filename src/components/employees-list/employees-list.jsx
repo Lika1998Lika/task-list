@@ -2,21 +2,13 @@
 import { EmployeesListItem } from "../employees-list-item/employees-list-item";
 import { ListGroup, Modal } from "react-bootstrap";
 import { Panel } from "../ui";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { EditingForm } from "../editingform/editingform";
 import { useModal } from "../../hooks/useModal";
 
 const EmployeesList = ({ data, toggleIncrease, onDelete, updateState }) => {
-    const [editingUserId, setEditingUserId] = useState(null);
     const [editingUser, setEditingUser] = useState(null);
-
-    useEffect(() => {
-        const user = data.find((user) => user.id === editingUserId);
-        setEditingUser(user)
-    }, [editingUserId, data])
-
-    const handleSetUserId = (userId) => setEditingUserId(userId);
-
+    const handleSetUser = (user) => setEditingUser(user);
     const { showModal, closeModal, openModal } = useModal();
 
     const elements = data.map((item) => {
@@ -28,7 +20,7 @@ const EmployeesList = ({ data, toggleIncrease, onDelete, updateState }) => {
                 item={item}
                 onDelete={onDelete}
                 handleShow={openModal}
-                handleSetUserId={handleSetUserId}
+                handleSetUser={handleSetUser}
             />
         )
     })
@@ -37,7 +29,6 @@ const EmployeesList = ({ data, toggleIncrease, onDelete, updateState }) => {
             <ListGroup>
                 {elements}
             </ListGroup>
-
             {
                 editingUser && (
                     <Modal show={showModal} onHide={closeModal}>
@@ -50,7 +41,6 @@ const EmployeesList = ({ data, toggleIncrease, onDelete, updateState }) => {
                 </Modal>
                 )
             }
-
         </Panel>
     )
 }

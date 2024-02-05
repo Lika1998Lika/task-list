@@ -4,7 +4,7 @@ import { ListGroupItem, Stack } from "react-bootstrap";
 import { BsCookie, BsPencilFill, BsTrash } from "react-icons/bs";
 
 export const EmployeesListItem = (props) => {
-    const { item, toggleIncrease, onDelete, handleShow, handleSetUserId } = props;
+    const { item, toggleIncrease, onDelete, handleShow, handleSetUser } = props;
     return (
         <ListGroupItem>
             <Stack direction="horizontal" className="d-flex justify-content-between">
@@ -29,7 +29,7 @@ export const EmployeesListItem = (props) => {
                         title="Редактировать"
                         role="button"
                         onClick={() => {
-                            handleSetUserId(item.id)
+                            handleSetUser(item)
                             handleShow()
                         }}/>
                     </Stack>

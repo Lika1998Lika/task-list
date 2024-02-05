@@ -1,37 +1,37 @@
 {
   "users": [
     {
-      "id": "a2b86f8a-6716-4ba4-989c-868e9adb56b6",
-      "name": "Ivan Ivanov",
-      "salary": 3000,
-      "increased": "not-approved",
-      "term": false
-    },
-    {
-      "id": "9e118229-121d-4245-a687-48725618819c",
-      "name": "Victor Retrov",
+      "id": "964ca06d-2d59-4ee1-b337-924f153d6c0a",
+      "name": "Иванов Ивашка",
       "salary": 10000,
       "increased": "not-approved",
       "term": false
     },
     {
-      "id": "a4893a01-3989-4d31-82d5-1b93e743bb31",
-      "name": "Lika",
-      "salary": 45000,
+      "id": "7e88aa4c-9746-4723-9aef-6edf87c58826",
+      "name": "Андреева Мария ",
+      "salary": 5000,
       "increased": "not-approved",
       "term": false
     },
     {
-      "id": "0a87bbd8-4db2-4dc6-a25a-bf600a25b955",
-      "name": "ytyytyty",
-      "salary": 60000,
+      "id": "60c8ba86-49d9-4ec6-ba5d-2ef7138c18be",
+      "name": "Адабаш Елизавета аааа",
+      "salary": 70000,
       "increased": "not-approved",
       "term": false
     },
     {
-      "id": "5c18de00-6c88-401f-928d-157faa057eaf",
-      "name": "Dana yadne",
-      "salary": 100000,
+      "id": "2373975a-dcfc-408e-95d8-322ac72ef9ac",
+      "name": "Рыжиков Роман",
+      "salary": 2500,
+      "increased": "not-approved",
+      "term": false
+    },
+    {
+      "id": "d0cae27c-f5fd-4911-a38b-f3e8e0db9079",
+      "name": "Вануйто Анжелика ",
+      "salary": 6000,
       "increased": "not-approved",
       "term": false
     }

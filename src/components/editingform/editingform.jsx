@@ -2,11 +2,12 @@
 import { useState } from 'react'
 import { Button, Form } from 'react-bootstrap';
 import { updateUser } from '../../services/userService';
+import { useToast } from '../../hooks/useToast';
 
 export const EditingForm = ({user, onSucces, onCancel, updateState}) => {
   const [userName, setUserName] = useState(user.name);
   const [salary, setSalary] = useState(user.salary);
-
+  const { success } = useToast()
   const handleChangeName = (evt) => {
     setUserName(() => evt.target.value);
 }
@@ -24,6 +25,7 @@ const handleChangeSalary = (evt) => {
 
     await updateUser(user.id, updatedUser)
     onSucces()
+    success('Данные обновлены')
     await updateState();
 }
 

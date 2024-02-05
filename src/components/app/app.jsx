@@ -8,7 +8,8 @@ import { Container, Spinner } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import { Panel } from '../ui';
 import { getUsers, addUser, deleteUser, updateUser } from '../../services/userService';
-
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 export const App = () => {
   const [data, setData] = useState([]);
@@ -104,6 +105,16 @@ export const App = () => {
       <div className='mt-3'>
         <EmployeesAddForm addUser={addUserForm} />
       </div>
+      <ToastContainer 
+        position="bottom-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        draggable
+        theme="dark"
+      />
     </Container>
   );
 }

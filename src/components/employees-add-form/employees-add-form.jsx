@@ -3,14 +3,17 @@ import { useState } from 'react';
 import { v4 as uniqId } from 'uuid'
 import { Panel } from '../ui';
 import { Button, Form } from 'react-bootstrap';
+import { useToast } from '../../hooks/useToast';
 
 export const EmployeesAddForm = ({ addUser }) => {
     const [userName, setUserName] = useState('');
     const [salary, setSalary] = useState('');
+    const { success, error } = useToast();
     const handleSubmit = (evt) => {
         evt.preventDefault();
 
         if (userName === '' || salary === '') {
+            error('Ошибка')
             return
         }
         const user = {
@@ -24,6 +27,7 @@ export const EmployeesAddForm = ({ addUser }) => {
         addUser(user)
         setUserName('')
         setSalary('')
+        success('Сотрудник добавлен')
     }
     return (
         <Panel>
