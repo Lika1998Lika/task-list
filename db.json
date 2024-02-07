@@ -1,37 +1,23 @@
 {
   "users": [
     {
-      "id": "964ca06d-2d59-4ee1-b337-924f153d6c0a",
-      "name": "Иванов Ивашка",
-      "salary": 10000,
-      "increased": "not-approved",
+      "id": "7f779609-e7bb-42e0-8c5b-b239e441cf36",
+      "name": "Вануйто Анжелика Вадимовна",
+      "salary": 2000,
+      "increased": "approved",
       "term": false
     },
     {
-      "id": "7e88aa4c-9746-4723-9aef-6edf87c58826",
-      "name": "Андреева Мария ",
-      "salary": 5000,
-      "increased": "not-approved",
+      "id": "bf282b21-069e-4383-a444-e5b54ef8086e",
+      "name": "Иванов Ивн Иванович",
+      "salary": 1500,
+      "increased": "approved",
       "term": false
     },
     {
-      "id": "60c8ba86-49d9-4ec6-ba5d-2ef7138c18be",
-      "name": "Адабаш Елизавета аааа",
-      "salary": 70000,
-      "increased": "not-approved",
-      "term": false
-    },
-    {
-      "id": "2373975a-dcfc-408e-95d8-322ac72ef9ac",
-      "name": "Рыжиков Роман",
-      "salary": 2500,
-      "increased": "not-approved",
-      "term": false
-    },
-    {
-      "id": "d0cae27c-f5fd-4911-a38b-f3e8e0db9079",
-      "name": "Вануйто Анжелика ",
-      "salary": 6000,
+      "id": "97f10cac-c47c-45bf-8009-ef128a4dded4",
+      "name": "Петров Петр Петрович",
+      "salary": 3000,
       "increased": "not-approved",
       "term": false
     }

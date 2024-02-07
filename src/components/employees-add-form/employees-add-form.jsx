@@ -9,12 +9,25 @@ export const EmployeesAddForm = ({ addUser }) => {
     const [userName, setUserName] = useState('');
     const [salary, setSalary] = useState('');
     const { success, error } = useToast();
+
+    const validateName = () => {
+        const nameRegex = /^[а-яА-Яa-zA-Z\s]+$/;
+        if (!nameRegex.test(userName)) {
+            error('Имя должно содержать только буквы и пробелы');
+            return false;
+        }
+        return true;
+    };
+
     const handleSubmit = (evt) => {
         evt.preventDefault();
 
         if (userName === '' || salary === '') {
             error('Ошибка')
             return
+        }
+        if (!validateName()) {
+            return;
         }
         const user = {
             id: uniqId(),
@@ -23,7 +36,6 @@ export const EmployeesAddForm = ({ addUser }) => {
             increased: "not-approved",
             term: false,
         }
-
         addUser(user)
         setUserName('')
         setSalary('')
@@ -36,12 +48,12 @@ export const EmployeesAddForm = ({ addUser }) => {
                 <Form.Control type="text"
                     value={userName}
                     onChange={(evt) => setUserName(evt.target.value)}
-                    placeholder="Как его зовут?" />
+                    placeholder="ФИО" />
+                <br/>
                 <Form.Control type="number"
                     value={salary}
                     onChange={(evt) => setSalary(evt.target.value)}
                     placeholder="З/П в $?" />
-
                 <Button className='mt-2 ' type="submit" variant='dark' size="lg">Добавить</Button>
             </Form>
         </Panel>
